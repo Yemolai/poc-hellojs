@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import moment from 'moment';
 
 moment.locale('pt-br');
@@ -27,6 +27,9 @@ export default {
       return moment(timestamp).format('llll');
     },
   },
+  mounted() {
+    this.$store.dispatch('auth/loadProfile', { network: 'facebook' });
+  },
   computed: {
     ...mapGetters('auth', ['profile', 'expiration']),
     name() {
@@ -37,6 +40,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions('auth', ['socialLogin', 'logout']),
     async fbSignOut(network) {
       try {
         await this.$hello.logout(network, { force: false });
