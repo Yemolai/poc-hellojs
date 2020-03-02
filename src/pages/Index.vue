@@ -9,15 +9,24 @@
     </h2>
     <p>{{ name }}</p>
     <p>{{ email }}</p>
+    <p>Access expires: {{ expiration.facebook | date }}</p>
     <q-btn @click="fbSignOut">Logout</q-btn>
   </q-page>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import moment from 'moment';
+
+moment.locale('pt-br');
 
 export default {
   name: 'PageIndex',
+  filters: {
+    date(timestamp) {
+      return moment(timestamp).format('llll');
+    },
+  },
   computed: {
     ...mapGetters('auth', ['profile', 'expiration']),
     name() {
@@ -25,9 +34,6 @@ export default {
     },
     email() {
       return this.profile.email;
-    },
-    expiration() {
-      return this.expiration.facebook;
     },
   },
   methods: {
