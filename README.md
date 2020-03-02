@@ -2,6 +2,8 @@
 
 Hello.js proof-of-concept
 
+just to validate the Hello.js lib usage for social login features.
+
 ## Install the dependencies
 ```bash
 yarn
