@@ -14,7 +14,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "hellojs": "^1.18.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },
